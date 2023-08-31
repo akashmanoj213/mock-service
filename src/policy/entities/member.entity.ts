@@ -18,4 +18,6 @@ export class Member {
   memberCapping: number;
   memberWaitingPeriod: number;
   numberOfClaims: number;
+  startDate: Date;
+  endDate: Date;
 }
