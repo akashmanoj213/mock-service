@@ -4,5 +4,8 @@ export class Hospital {
   hospitalLocation: string;
   hospitalPincode: string;
   hospitalEmailId: string;
+  bankAccountNumber: string;
+  bankIfscCode: string;
+  bankAccountName: string;
   rohiniId: number;
 }

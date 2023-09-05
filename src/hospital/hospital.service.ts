@@ -11,6 +11,9 @@ export class HospitalService {
       hospitalEmailId: 'appolo-bangalore@gmail.com',
       rohiniId: 12876,
       hospitalPincode: '560037',
+      bankAccountNumber: '167489563905',
+      bankIfscCode: 'NEFT007',
+      bankAccountName: 'Apollo',
     },
     {
       id: 7002,
@@ -19,6 +22,9 @@ export class HospitalService {
       hospitalEmailId: 'fortisbangalore@gmail.com',
       rohiniId: 12872,
       hospitalPincode: '560093',
+      bankAccountNumber: '864735890134',
+      bankIfscCode: 'ICIC023',
+      bankAccountName: 'Fortis',
     },
     {
       id: 7003,
@@ -27,6 +33,9 @@ export class HospitalService {
       hospitalEmailId: 'narayanahru@gmail.com',
       rohiniId: 12863,
       hospitalPincode: '560045',
+      bankAccountNumber: '109845899347',
+      bankIfscCode: 'NAR2314',
+      bankAccountName: 'Narayana',
     },
   ];
 
