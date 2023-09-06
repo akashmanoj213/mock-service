@@ -9,7 +9,7 @@ import { PaymentService } from './payment.service';
 import { InitiatePaymentDto } from './dto/initiate-payment.dto';
 import { Payment, RequestedBySources } from './entities/payment.entity';
 import { PubSubService } from 'src/core/providers/pub-sub/pub-sub.service';
-import { PaymentCompletedEventDto } from 'src/core/dto/payment-completed-event.dto';
+import { PaymentCompletedEventDto } from 'src/payment/dto/payment-completed-event.dto';
 
 @Controller('payment')
 export class PaymentController {
