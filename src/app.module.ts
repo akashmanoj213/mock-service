@@ -6,6 +6,7 @@ import { HospitalModule } from './hospital/hospital.module';
 import { PaymentModule } from './payment/payment.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PasModule } from './pas/pas.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     PolicyModule,
     HospitalModule,
     PaymentModule,
+    PasModule,
   ],
   controllers: [AppController],
   providers: [AppService],

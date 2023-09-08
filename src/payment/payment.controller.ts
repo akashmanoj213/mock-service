@@ -23,6 +23,8 @@ export class PaymentController {
 
   @Post('initiate')
   async initiatePayment(@Body() initiatePayemntDto: InitiatePaymentDto) {
+    console.log('-------------------  -------------------');
+    console.log(`Initiate payment API invoked.`);
     try {
       const payment = new Payment({
         ...initiatePayemntDto,
@@ -34,6 +36,7 @@ export class PaymentController {
 
       return savedPayment.id;
     } catch (error) {
+      console.log(`Error occured during payment initiation ! ${error.message}`);
       throw new InternalServerErrorException(
         'Error occured during payment initiation !',
         {
@@ -46,6 +49,8 @@ export class PaymentController {
 
   @Post('webhook/:paymentId')
   async updatePayment(@Param('paymentId') paymentId: number) {
+    console.log('-------------------  -------------------');
+    console.log(`Payment webhook API invoked.`);
     try {
       const payment = await this.paymentService.findOne(paymentId);
 
@@ -59,6 +64,9 @@ export class PaymentController {
 
       await this.publishMessage(savedPayment);
     } catch (error) {
+      console.log(
+        `Error occured while processing payment webhook ! ${error.message}`,
+      );
       throw new InternalServerErrorException(
         'Error occured while processing payment webhook !',
         {

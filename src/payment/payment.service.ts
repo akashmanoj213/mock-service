@@ -18,15 +18,24 @@ export class PaymentService {
       },
     });
 
-    if (!existingPayment) {
-      return await this.save(payment);
+    if (existingPayment) {
+      console.log(
+        `Payment record already exists for transaction ID ${uniqueTransactionId}`,
+      );
+      return existingPayment;
     }
+
+    const result = await this.save(payment);
+    console.log(`Payment record created! paymentId: ${result.id}`);
+
+    return result;
   }
 
   async updatePaymentRecord(payment: Payment) {
     payment.status = PaymentStatus.COMPLETED;
 
     await this.save(payment);
+    console.log(`Payment status updated.`);
 
     return payment;
   }
