@@ -110,12 +110,38 @@ export class PasController {
 
   @Get()
   findAll() {
-    return this.pasService.findAll();
+    try {
+      return this.pasService.findAll();
+    } catch (error) {
+      console.log(
+        `Error occured while fetching claim details ! Error: ${error.message}`,
+      );
+      throw new InternalServerErrorException(
+        'Error occured while fetching claim details !',
+        {
+          cause: error,
+          description: error.message,
+        },
+      );
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pasService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    try {
+      return this.pasService.findOne(id);
+    } catch (error) {
+      console.log(
+        `Error occured while fetching claim details ! Error: ${error.message}`,
+      );
+      throw new InternalServerErrorException(
+        'Error occured while fetching claim details !',
+        {
+          cause: error,
+          description: error.message,
+        },
+      );
+    }
   }
 
   @Delete(':id')
