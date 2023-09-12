@@ -18,6 +18,7 @@ export class Member {
   memberCapping: number;
   memberWaitingPeriod: number;
   numberOfClaims: number;
+  isInstantCashless: boolean;
   startDate: Date;
   endDate: Date;
 }

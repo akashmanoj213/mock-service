@@ -39,12 +39,13 @@ export class ClaimDto {
   claimType: ClaimType;
   isAccident: boolean;
   isPregnancy: boolean;
+  isInstantCashless: boolean;
   totalClaimAmount: number;
   approvedPayableAmount: number;
   coPayableAmount: number;
   tpaId: number;
   isVariationDetected: boolean;
-  isDischarged: boolean;
+  isFinal: boolean;
   createdAt: Date;
   updatedAt: Date;
 

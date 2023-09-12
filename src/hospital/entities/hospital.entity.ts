@@ -8,4 +8,5 @@ export class Hospital {
   bankIfscCode: string;
   bankAccountName: string;
   rohiniId: number;
+  isInstantCashless: boolean;
 }

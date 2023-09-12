@@ -6,7 +6,7 @@ import { Gender } from './entities/member.entity';
 export class PolicyService {
   private readonly policies: Policy[] = [
     {
-      id: 1000,
+      id: 1000, // HIGH SUM INSURED - FRAUD CASE
       sumInsured: 10000000.5,
       startDate: new Date('01/01/2023'),
       endDate: new Date('12/30/2023'),
@@ -32,6 +32,7 @@ export class PolicyService {
           numberOfClaims: 1,
           startDate: new Date('01/01/2023'),
           endDate: new Date('12/30/2023'),
+          isInstantCashless: false,
         },
         {
           id: 5002,
@@ -49,11 +50,12 @@ export class PolicyService {
           numberOfClaims: 2,
           startDate: new Date('01/01/2023'),
           endDate: new Date('12/30/2023'),
+          isInstantCashless: false,
         },
       ],
     },
     {
-      id: 1001,
+      id: 1001, // NORMAL CASE - INSTANT CASHLESS
       sumInsured: 7000000.0,
       startDate: new Date('03/01/2023'),
       endDate: new Date('02/29/2024'),
@@ -79,6 +81,38 @@ export class PolicyService {
           numberOfClaims: 0,
           startDate: new Date('03/01/2023'),
           endDate: new Date('02/29/2024'),
+          isInstantCashless: true,
+        },
+      ],
+    },
+    {
+      id: 1002, // HIGH FREQUENCY - SUSPICIOUS CASE
+      sumInsured: 10000000.0,
+      startDate: new Date('01/01/2023'),
+      endDate: new Date('12/31/2023'),
+      policyBenefits: 'Only cancer-related treatments covered',
+      policyDeductions: 0.0,
+      policyCapping: null,
+      policyWaitingPeriod: 60,
+      totalNumberOfClaims: 7,
+      members: [
+        {
+          id: 5004,
+          fullName: 'Alex Varghese',
+          gender: Gender.MALE,
+          sumInsured: 10000000.0,
+          contactNumber: '9845673882',
+          email: 'alex@gmail.com',
+          communicationPreference: 'whatsapp',
+          exclusions: 'NA',
+          memberBenefits: 'All Critical Illness',
+          memberDeductions: 0.0,
+          memberCapping: null,
+          memberWaitingPeriod: 0,
+          numberOfClaims: 7,
+          startDate: new Date('01/01/2023'),
+          endDate: new Date('12/31/2023'),
+          isInstantCashless: false,
         },
       ],
     },

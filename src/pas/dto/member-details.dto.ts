@@ -16,6 +16,7 @@ export class MemberDetailsDto {
   memberCapping: number;
   memberWaitingPeriod: number;
   numberOfClaims: number;
+  isInstantCashless: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

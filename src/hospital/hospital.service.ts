@@ -5,7 +5,7 @@ import { Hospital } from './entities/hospital.entity';
 export class HospitalService {
   private readonly hospitals: Hospital[] = [
     {
-      id: 7001,
+      id: 7001, // FRAUD CASE - PINCODE
       hospitalName: 'Appolo Multi Speciality',
       hospitalLocation: 'Bangalore',
       hospitalEmailId: 'appolo-bangalore@gmail.com',
@@ -14,6 +14,7 @@ export class HospitalService {
       bankAccountNumber: '167489563905',
       bankIfscCode: 'NEFT007',
       bankAccountName: 'Apollo',
+      isInstantCashless: false,
     },
     {
       id: 7002,
@@ -25,6 +26,7 @@ export class HospitalService {
       bankAccountNumber: '864735890134',
       bankIfscCode: 'ICIC023',
       bankAccountName: 'Fortis',
+      isInstantCashless: false,
     },
     {
       id: 7003,
@@ -36,6 +38,19 @@ export class HospitalService {
       bankAccountNumber: '109845899347',
       bankIfscCode: 'NAR2314',
       bankAccountName: 'Narayana',
+      isInstantCashless: false,
+    },
+    {
+      id: 7004, // INSTANT CASHLESS
+      hospitalName: 'Manipal',
+      hospitalLocation: 'Bangalore',
+      hospitalEmailId: 'manipal@gmail.com',
+      rohiniId: 12897,
+      hospitalPincode: '560024',
+      bankAccountNumber: '102645804347',
+      bankIfscCode: 'HDFC87263',
+      bankAccountName: 'Manipal',
+      isInstantCashless: true,
     },
   ];
 

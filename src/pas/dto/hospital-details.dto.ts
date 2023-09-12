@@ -9,6 +9,7 @@ export class HospitalDetailsDto {
   bankIfscCode: string;
   bankAccountName: string;
   rohiniId: number;
+  isInstantCashless: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
