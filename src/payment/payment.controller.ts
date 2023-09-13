@@ -87,6 +87,7 @@ export class PaymentController {
           uniqueTransactionId,
         };
 
+        console.log('Publishing to cashless-claim-payment-completed topic.');
         await this.pubSubService.publishMessage(
           this.CASHLESS_CLAIM_PAYMENT_COMPLETED,
           paymentCompletedEventDto,

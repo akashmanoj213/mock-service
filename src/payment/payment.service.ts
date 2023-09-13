@@ -26,7 +26,7 @@ export class PaymentService {
     }
 
     const result = await this.save(payment);
-    console.log(`Payment record created! paymentId: ${result.id}`);
+    console.log(`Payment record created ! paymentId: ${result.id}`);
 
     return result;
   }
