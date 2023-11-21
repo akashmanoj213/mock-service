@@ -7,6 +7,8 @@ import { PaymentModule } from './payment/payment.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PasModule } from './pas/pas.module';
+import { EventHandlerModule } from './event-handler/event-handler.module';
+import { LoggerModule } from 'nestjs-pino';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { PasModule } from './pas/pas.module';
     HospitalModule,
     PaymentModule,
     PasModule,
+    EventHandlerModule,
+    LoggerModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],
