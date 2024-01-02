@@ -28,7 +28,11 @@ import { LoggerModule } from 'nestjs-pino';
     PaymentModule,
     PasModule,
     EventHandlerModule,
-    LoggerModule.forRoot(),
+    LoggerModule.forRoot({
+      pinoHttp: {
+        autoLogging: false,
+      },
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

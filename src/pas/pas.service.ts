@@ -27,7 +27,7 @@ export class PasService {
   async getAdjudicationItems(claimId: number) {
     const { data } = await firstValueFrom(
       this.httpService.get(
-        `${process.env.CLAIM_SERVICE_BASE_URL}/claims-adjudication/claim/${claimId}`,
+        `${process.env.CLAIM_ADJ_SERVICE_BASE_URL}/claims-adjudication/claim/${claimId}`,
       ),
     );
 
@@ -40,7 +40,7 @@ export class PasService {
   async getClaimSettlementDetails(claimSettlementId: number) {
     const { data: claimSettlementDto } = await firstValueFrom(
       this.httpService.get(
-        `${process.env.CLAIM_SERVICE_BASE_URL}/claims-settlement/${claimSettlementId}`,
+        `${process.env.CLAIM_SETTLEMENT_SERVICE_BASE_URL}/claims-settlement/${claimSettlementId}`,
       ),
     );
 
