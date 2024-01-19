@@ -69,7 +69,7 @@ export class PolicyService {
           id: 5003,
           fullName: 'Jane Doe',
           gender: Gender.FEMALE,
-          sumInsured: 7000000.0,
+          sumInsured: 1000000.0, // Change back to 70 Lakh
           contactNumber: '9845673823',
           email: 'janeDow@gmail.com',
           communicationPreference: 'whatsapp',
