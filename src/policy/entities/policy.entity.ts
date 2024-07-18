@@ -10,5 +10,6 @@ export class Policy {
   policyCapping: number;
   policyWaitingPeriod: number;
   totalNumberOfClaims: number;
+  caretakerContactNumber: string;
   members: Member[];
 }

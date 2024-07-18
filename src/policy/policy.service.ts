@@ -15,6 +15,7 @@ export class PolicyService {
       policyCapping: null,
       policyWaitingPeriod: 0,
       totalNumberOfClaims: 3,
+      caretakerContactNumber: '9972976940',
       members: [
         {
           id: 5001,
@@ -64,6 +65,7 @@ export class PolicyService {
       policyCapping: null,
       policyWaitingPeriod: 60,
       totalNumberOfClaims: 0,
+      caretakerContactNumber: '9972976940',
       members: [
         {
           id: 5003,
@@ -95,6 +97,7 @@ export class PolicyService {
       policyCapping: null,
       policyWaitingPeriod: 60,
       totalNumberOfClaims: 7,
+      caretakerContactNumber: '9972976940',
       members: [
         {
           id: 5004,
