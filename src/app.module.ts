@@ -5,7 +5,7 @@ import { PolicyModule } from './policy/policy.module';
 import { HospitalModule } from './hospital/hospital.module';
 import { PaymentModule } from './payment/payment.module';
 import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+// import { TypeOrmModule } from '@nestjs/typeorm';
 import { PasModule } from './pas/pas.module';
 import { EventHandlerModule } from './event-handler/event-handler.module';
 import { LoggerModule } from 'nestjs-pino';
@@ -13,16 +13,16 @@ import { LoggerModule } from 'nestjs-pino';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: 'Mocks',
-      synchronize: true,
-      autoLoadEntities: true,
-    }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: process.env.DB_HOST,
+    //   port: parseInt(process.env.DB_PORT),
+    //   username: process.env.DB_USERNAME,
+    //   password: process.env.DB_PASSWORD,
+    //   database: 'Mocks',
+    //   synchronize: true,
+    //   autoLoadEntities: true,
+    // }),
     PolicyModule,
     HospitalModule,
     PaymentModule,
@@ -31,6 +31,7 @@ import { LoggerModule } from 'nestjs-pino';
     LoggerModule.forRoot({
       pinoHttp: {
         autoLogging: false,
+        wrapSerializers: true,
       },
     }),
   ],
