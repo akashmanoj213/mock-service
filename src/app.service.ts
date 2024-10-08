@@ -13,8 +13,8 @@ export class AppService {
   }
 
   handleZscoreWebhook(body) {
-    console.log(body);
     this.logger.log({ body });
+    console.log(body);
   }
 
   async postClaims() {
