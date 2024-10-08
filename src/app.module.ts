@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PasModule } from './pas/pas.module';
 import { EventHandlerModule } from './event-handler/event-handler.module';
 import { LoggerModule } from 'nestjs-pino';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { LoggerModule } from 'nestjs-pino';
     PaymentModule,
     PasModule,
     EventHandlerModule,
+    HttpModule,
     LoggerModule.forRoot({
       pinoHttp: {
         autoLogging: false,

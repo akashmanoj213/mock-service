@@ -35,4 +35,10 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Post('post-claims')
+  async postClaims() {
+    const response = await this.appService.postClaims();
+    return response; // Return the response data
+  }
 }
