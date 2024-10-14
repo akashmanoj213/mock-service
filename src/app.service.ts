@@ -1,20 +1,30 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
+import { FirestoreService } from './core/providers/firestore/firestore.service';
 
 @Injectable()
 export class AppService {
   private readonly logger = new Logger(AppService.name);
 
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly firestoreService: FirestoreService,
+  ) {}
+
+  async handleZscoreWebhook(body) {
+    const savedDocument = await this.firestoreService.createOrOverride(
+      process.env.DOCUMENTS_COLLECTION,
+      Math.random(),
+      body,
+    );
+
+    console.log('Digitised document saved to firestore.');
+    return savedDocument;
+  }
 
   getHello(): string {
     return 'Hello World!';
-  }
-
-  handleZscoreWebhook(body) {
-    this.logger.log({ body });
-    console.log(body);
   }
 
   async postClaims() {
