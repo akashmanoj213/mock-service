@@ -13,9 +13,14 @@ export class AppService {
   ) {}
 
   async handleZscoreWebhook(body) {
+    const { transactionId } = body;
+    const parsedTransactionId = parseInt(transactionId);
+
     const savedDocument = await this.firestoreService.createOrOverride(
       process.env.DOCUMENTS_COLLECTION,
-      Math.random(),
+      !isNaN(parsedTransactionId)
+        ? parsedTransactionId
+        : Math.floor(Math.random() * 100),
       body,
     );
 
@@ -27,32 +32,37 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async postClaims() {
+  async postClaims(body: any) {
     const url = 'http://20.106.184.11:8080/Zscore/postClaims';
     const headers = {
       authkey: 'kabclwegc24ewjg23hgcxjahkjbkdfx2',
       'Content-Type': 'application/json',
-    };
-    const body = {
-      claims: [
-        {
-          claim_id: 'CL002',
-          storageFolder: 'CL002',
-          transaction_id: 'CLAIM10001',
-          storageBucket: 'gcs-testbucketzscore',
-        },
-      ],
     };
 
     try {
       const { data } = await firstValueFrom(
         this.httpService.post(url, body, { headers }),
       );
-      console.log('API call succesful');
+      console.log('API call succesfull');
       return data;
     } catch (error) {
       console.log(`Error making POST request to ${url}: ${error.message}`);
       throw error;
     }
+  }
+
+  async getDigitisedDocuments() {
+    const documents = await this.firestoreService.findAll(
+      process.env.DOCUMENTS_COLLECTION,
+    );
+    return documents;
+  }
+
+  async getDigitisedDocumentById(id: number) {
+    const document = await this.firestoreService.findById(
+      process.env.DOCUMENTS_COLLECTION,
+      id,
+    );
+    return document;
   }
 }

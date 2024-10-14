@@ -4,6 +4,7 @@ import {
   Get,
   InternalServerErrorException,
   Logger,
+  Param,
   Post,
 } from '@nestjs/common';
 import { AppService } from './app.service';
@@ -37,8 +38,20 @@ export class AppController {
   }
 
   @Post('post-claims')
-  async postClaims() {
-    const response = await this.appService.postClaims();
+  async postClaims(@Body() requestBody: any) {
+    const response = await this.appService.postClaims(requestBody);
+    return response;
+  }
+
+  @Get('digitised-document')
+  async getDigitisedDocuments() {
+    const response = await this.appService.getDigitisedDocuments();
     return response; // Return the response data
+  }
+
+  @Get('digitised-document/:id')
+  async getDigitisedDocumentById(@Param('id') id: string) {
+    const response = await this.appService.getDigitisedDocumentById(+id);
+    return response;
   }
 }
