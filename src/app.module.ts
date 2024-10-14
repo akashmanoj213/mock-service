@@ -10,6 +10,7 @@ import { PasModule } from './pas/pas.module';
 import { EventHandlerModule } from './event-handler/event-handler.module';
 import { LoggerModule } from 'nestjs-pino';
 import { HttpModule } from '@nestjs/axios';
+import { FirestoreModule } from './core/providers/firestore/firestore.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { HttpModule } from '@nestjs/axios';
     PasModule,
     EventHandlerModule,
     HttpModule,
+    FirestoreModule,
     LoggerModule.forRoot({
       pinoHttp: {
         autoLogging: false,
