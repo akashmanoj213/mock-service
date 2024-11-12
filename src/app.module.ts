@@ -11,20 +11,22 @@ import { EventHandlerModule } from './event-handler/event-handler.module';
 import { LoggerModule } from 'nestjs-pino';
 import { HttpModule } from '@nestjs/axios';
 import { FirestoreModule } from './core/providers/firestore/firestore.module';
+import { FyntuneModule } from './fyntune/fyntune.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: process.env.DB_HOST,
-    //   port: parseInt(process.env.DB_PORT),
-    //   username: process.env.DB_USERNAME,
-    //   password: process.env.DB_PASSWORD,
-    //   database: 'Mocks',
-    //   synchronize: true,
-    //   autoLoadEntities: true,
-    // }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: 'Mocks',
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
     PolicyModule,
     HospitalModule,
     PaymentModule,
@@ -38,6 +40,7 @@ import { FirestoreModule } from './core/providers/firestore/firestore.module';
         wrapSerializers: true,
       },
     }),
+    FyntuneModule,
   ],
   controllers: [AppController],
   providers: [AppService],
