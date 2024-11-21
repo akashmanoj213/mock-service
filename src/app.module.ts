@@ -13,6 +13,7 @@ import { HttpModule } from '@nestjs/axios';
 import { FirestoreModule } from './core/providers/firestore/firestore.module';
 import { FyntuneModule } from './fyntune/fyntune.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { IassistModule } from './iassist/iassist.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       },
     }),
     FyntuneModule,
+    IassistModule,
   ],
   controllers: [AppController],
   providers: [AppService],
