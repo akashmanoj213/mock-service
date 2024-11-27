@@ -42,6 +42,18 @@ export class PubSubService {
     }
   }
 
+  formatMessageToPlainData(pubSubMessage: PubSubMessageDto) {
+    const {
+      message: { data },
+    } = pubSubMessage;
+
+    const bufferObj = Buffer.from(data, 'base64');
+    const decodedData = bufferObj.toString('utf8');
+    const jsonObj = JSON.parse(decodedData);
+
+    return jsonObj;
+  }
+
   formatMessageData<T>(
     pubSubMessage: PubSubMessageDto,
     resourceType: ClassConstructor<T>,
