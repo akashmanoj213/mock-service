@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Headers } from '@nestjs/common';
+import { Body, Controller, Get, Post, Headers, Ip } from '@nestjs/common';
 import { MediAssistService } from './medi-assist.service';
 import { FetchAllClaimDetailsDto } from './dtos/fetch-all-claim-details.dto';
 import { ClaimCreateRequestDto } from './dtos/claim-create-request.dto';
@@ -74,8 +74,10 @@ export class MediAssistController {
   }
 
   @Get('ip-address')
-  async getIpAddpress() {
-    return this.mediAssistService.getIpAddress();
+  async getIpAddpress(@Ip() ipAddress: string) {
+    console.log('IP address; ', ipAddress);
+    return ipAddress;
+    // return this.mediAssistService.getIpAddress();
   }
 
   @Get('if-address')
