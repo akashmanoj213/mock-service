@@ -77,4 +77,9 @@ export class MediAssistController {
   async getIpAddpress() {
     return this.mediAssistService.getIpAddress();
   }
+
+  @Get('if-address')
+  async getIfAddpress() {
+    return this.mediAssistService.getIfAddress();
+  }
 }
