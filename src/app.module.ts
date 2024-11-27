@@ -14,6 +14,7 @@ import { FirestoreModule } from './core/providers/firestore/firestore.module';
 import { FyntuneModule } from './fyntune/fyntune.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IassistModule } from './iassist/iassist.module';
+import { MediAssistModule } from './medi-assist/medi-assist.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { IassistModule } from './iassist/iassist.module';
     }),
     FyntuneModule,
     IassistModule,
+    MediAssistModule,
   ],
   controllers: [AppController],
   providers: [AppService],
