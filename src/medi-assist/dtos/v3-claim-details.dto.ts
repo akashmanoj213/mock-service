@@ -2,7 +2,7 @@ import { ValidateNested, IsBoolean, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 import { AuditTrailDto } from './audit-trail.dto';
 import { BasicDetailsDto } from './basic-details.dto';
-import { ClaimBankDetailsDto } from './Claim-bank-details.dto';
+import { ClaimBankDetailsDto } from './claim-bank-details.dto';
 import { SettlementDetailsDto } from './setllement-details.dto';
 import { V3AttachmentsDto } from './v3-attachments.dto';
 import { V3BillsDto } from './v3-bills.dto';
