@@ -15,12 +15,12 @@ export class FirestoreService {
 
   async createOrOverride<T>(
     collectionName: string,
-    id: number,
+    id: string,
     entity: Partial<T>,
   ) {
     const res = await this.db
       .collection(collectionName)
-      .doc(id.toString())
+      .doc(id)
       .set(entity, { merge: true });
     return res;
   }
@@ -39,8 +39,8 @@ export class FirestoreService {
     return entity;
   }
 
-  async update<T>(collectionName: string, id: number, entity: T) {
-    const docRef = this.db.collection(collectionName).doc(id.toString());
+  async update<T>(collectionName: string, id: string, entity: T) {
+    const docRef = this.db.collection(collectionName).doc(id);
     entity = {
       ...entity,
       updatedAt: Timestamp.now(),
@@ -49,8 +49,8 @@ export class FirestoreService {
     return res;
   }
 
-  async findById(collectionName: string, id: number) {
-    const collectionRef = this.db.collection(collectionName).doc(id.toString());
+  async findById(collectionName: string, id: string) {
+    const collectionRef = this.db.collection(collectionName).doc(id);
     const doc = await collectionRef.get();
     const data = doc.data();
     const exists = doc.exists;

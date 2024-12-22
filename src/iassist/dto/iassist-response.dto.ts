@@ -1,24 +1,43 @@
 // iassist/dto/iassist-response.dto.ts
 import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
+import { Transform } from 'class-transformer';
 
-export class IassistResponseDto {
+export class ResultDto {
+  @IsNotEmpty()
+  @Transform(({ value }) => new Date(value))
+  completed_time: Date;
+
+  @IsString()
+  error_message: string;
+
   @IsNotEmpty()
   @IsString()
   message: string;
 
   @IsNotEmpty()
+  @Transform(({ value }) => new Date(value))
+  received_time: string;
+
+  @IsNotEmpty()
   @IsUUID()
   ref_id: string;
 
+  response: any;
+
   @IsNotEmpty()
   @IsString()
-  status: string;
+  service_status: string;
 
   @IsNotEmpty()
-  @IsUUID()
-  task_id: string;
+  status_code: number;
+}
 
+export class DataDto {
   @IsNotEmpty()
-  @IsString() // Or IsNumberString if you expect it as a string
-  tracking_id: string;
+  result: ResultDto;
+}
+
+export class IassistResponseDto {
+  @IsNotEmpty()
+  data: DataDto;
 }

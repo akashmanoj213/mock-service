@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { FirestoreService } from './core/providers/firestore/firestore.service';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class AppService {
@@ -14,13 +15,13 @@ export class AppService {
 
   async handleZscoreWebhook(body) {
     const { transactionId } = body;
-    const parsedTransactionId = parseInt(transactionId);
+    const parsedTransactionId = transactionId
+      ? transactionId.toString()
+      : randomUUID().toString();
 
     const savedDocument = await this.firestoreService.createOrOverride(
       process.env.DOCUMENTS_COLLECTION,
-      !isNaN(parsedTransactionId)
-        ? parsedTransactionId
-        : Math.floor(Math.random() * 100),
+      parsedTransactionId,
       body,
     );
 
@@ -58,7 +59,7 @@ export class AppService {
     return documents;
   }
 
-  async getDigitisedDocumentById(id: number) {
+  async getDigitisedDocumentById(id: string) {
     const document = await this.firestoreService.findById(
       process.env.DOCUMENTS_COLLECTION,
       id,

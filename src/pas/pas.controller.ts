@@ -127,7 +127,7 @@ export class PasController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     try {
       return this.pasService.findOne(id);
     } catch (error) {

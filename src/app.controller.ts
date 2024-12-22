@@ -51,7 +51,7 @@ export class AppController {
 
   @Get('digitised-document/:id')
   async getDigitisedDocumentById(@Param('id') id: string) {
-    const response = await this.appService.getDigitisedDocumentById(+id);
+    const response = await this.appService.getDigitisedDocumentById(id);
     return response;
   }
 }

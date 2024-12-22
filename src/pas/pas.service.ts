@@ -50,7 +50,7 @@ export class PasService {
   async syncClaimDetails(claim: ClaimDto) {
     const savedClaim = await this.firestoreService.createOrOverride<ClaimDto>(
       process.env.CLAIMS_COLLECTION,
-      claim.id,
+      claim.id.toString(),
       claim,
     );
 
@@ -76,7 +76,7 @@ export class PasService {
     const savedClaimSettlementItem =
       await this.firestoreService.createOrOverride(
         process.env.CLAIMS_COLLECTION,
-        claimSettlementDetails.claimId,
+        claimSettlementDetails.claimId.toString(),
         {
           claimSettlement: claimSettlementDetails,
         },
@@ -90,10 +90,10 @@ export class PasService {
     return this.firestoreService.findAll(process.env.CLAIMS_COLLECTION);
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const { exists, data } = await this.firestoreService.findById(
       process.env.CLAIMS_COLLECTION,
-      id,
+      id.toString(),
     );
 
     if (!exists) {

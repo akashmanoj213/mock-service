@@ -17,6 +17,7 @@ import { ClaimBillAdditionRequestDto } from './dtos/claim-bill-addition-request.
 import { ClaimAttachmentsAdditionDto } from './dtos/claim-attachments-addition.dto';
 import { MAEnrolmentRequestDTO } from './dtos/ma-enrolment-request.dto';
 import { PubSubService } from 'src/core/providers/pub-sub/pub-sub.service';
+import { PubSubMessageDto } from 'src/core/dto/pub-sub-message.dto';
 
 @Controller('medi-assist')
 export class MediAssistController {

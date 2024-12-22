@@ -1,6 +1,7 @@
 export enum DocumentType {
   DISCHARGE_SUMMARY = 'discharge_summary',
   LAB_REPORT = 'lab_report',
+  COMBINED = 'combined',
 }
 
 export enum DigitisationStatus {
@@ -11,11 +12,13 @@ export enum DigitisationStatus {
 }
 
 export class DocumentEntity {
-  trackingId: number;
-  documentType: DocumentType;
+  traceparentId: string;
+  documentType?: DocumentType;
   digitisationStatus: DigitisationStatus = DigitisationStatus.INITIATED;
+  fileName?: string;
   responseMessage?: string;
-  responseStatus?: string;
+  errorMessage?: number;
+  responseStatus?: number;
   referenceId?: string;
-  taskId?: string;
+  response?: any;
 }

@@ -18,40 +18,40 @@ export class IassistController {
   private readonly logger = new Logger(IassistController.name);
   constructor(private readonly iassistService: IassistService) {}
 
-  @Post('discharge-summary')
-  @UseInterceptors(FileInterceptor('file'))
-  async digitiseDischargeSummary(
-    @UploadedFile() file: Express.Multer.File,
-    @Body() body: FileDigitisationDto,
-  ) {
-    try {
-      const result = await this.iassistService.digitiseDischargeSummary(
-        file,
-        body.trackingId,
-      );
-      return result;
-    } catch (error) {
-      throw new InternalServerErrorException(
-        'Failed to initiate digitization of discharge summary',
-      );
-    }
-  }
+  // @Post('discharge-summary')
+  // @UseInterceptors(FileInterceptor('file'))
+  // async digitiseDischargeSummary(
+  //   @UploadedFile() file: Express.Multer.File,
+  //   @Body() body: FileDigitisationDto,
+  // ) {
+  //   try {
+  //     const result = await this.iassistService.digitiseDischargeSummary(
+  //       file,
+  //       body.trackingId,
+  //     );
+  //     return result;
+  //   } catch (error) {
+  //     throw new InternalServerErrorException(
+  //       'Failed to initiate digitization of discharge summary',
+  //     );
+  //   }
+  // }
 
-  @Post('lab-report')
+  @Post('initiate-digitisation')
   @UseInterceptors(FileInterceptor('file'))
-  async digitiseLabReport(
+  async initiateDigitisation(
     @UploadedFile() file: Express.Multer.File,
     @Body() body: FileDigitisationDto, // Reusing the existing DTO
   ) {
     try {
-      const result = await this.iassistService.digitiseLabReport(
+      const result = await this.iassistService.digitiseDocument(
         file,
         body.trackingId,
       );
       return result;
     } catch (error) {
       throw new InternalServerErrorException(
-        'Failed to initiate digitization of lab report',
+        'Failed to initiate document digitisation',
       );
     }
   }
@@ -60,7 +60,7 @@ export class IassistController {
   async getDigitisationStatus(@Param('trackingId') trackingId: string) {
     try {
       const result = await this.iassistService.getDigitisationStatus(
-        parseInt(trackingId, 10), // Convert trackingId to number
+        trackingId,
       );
       return result;
     } catch (error) {
