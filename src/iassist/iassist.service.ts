@@ -64,6 +64,7 @@ export class IassistService {
 
       const { access_token: accessToken } = response.data;
       this.accessToken = accessToken;
+      console.log('access-token', accessToken);
       return accessToken;
     } catch (error) {
       console.log('Error getting access token:', error.message);
@@ -112,6 +113,10 @@ export class IassistService {
     };
 
     try {
+      console.log(
+        'Initiating digitization of document, trackingId:',
+        traceparentId,
+      );
       const response = await lastValueFrom(
         this.httpService.post(url, formData, { headers }),
       );
@@ -134,6 +139,7 @@ export class IassistService {
         },
       } = iassistResponse;
 
+      console.log('Document digitization initiated, ref_id:', ref_id);
       // update digitisation status to IN_PROGRESS
       document.digitisationStatus = DigitisationStatus.IN_PROGRESS;
       document.referenceId = ref_id;
